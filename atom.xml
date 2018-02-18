@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-14T04:24:08.644Z</updated>
+  <updated>2018-02-18T11:44:47.971Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习之逻辑回归（LR）</title>
+    <link href="http://yoursite.com/2018/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%EF%BC%88LR%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/02/18/机器学习之逻辑回归（LR）/</id>
+    <published>2018-02-18T11:44:47.000Z</published>
+    <updated>2018-02-18T11:44:47.971Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习之树回归</title>
+    <link href="http://yoursite.com/2018/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%A0%91%E5%9B%9E%E5%BD%92/"/>
+    <id>http://yoursite.com/2018/02/17/机器学习之树回归/</id>
+    <published>2018-02-17T08:35:03.000Z</published>
+    <updated>2018-02-17T08:35:03.102Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习之决策树</title>
+    <link href="http://yoursite.com/2018/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/"/>
+    <id>http://yoursite.com/2018/02/16/机器学习之决策树/</id>
+    <published>2018-02-16T15:34:10.000Z</published>
+    <updated>2018-02-16T15:34:10.937Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>机器学习之朴素贝叶斯（bayes）</title>
