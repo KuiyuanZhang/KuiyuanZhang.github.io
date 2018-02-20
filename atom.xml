@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-18T11:44:47.971Z</updated>
+  <updated>2018-02-20T14:10:08.665Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习之支持向量机（SVM）</title>
+    <link href="http://yoursite.com/2018/02/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/02/20/机器学习之支持向量机（SVM）/</id>
+    <published>2018-02-20T14:10:08.000Z</published>
+    <updated>2018-02-20T14:10:08.665Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>机器学习之逻辑回归（LR）</title>
@@ -334,11 +348,11 @@
     
       <category term="监督学习" scheme="http://yoursite.com/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
     
+      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
       <category term="决策树" scheme="http://yoursite.com/tags/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
     
       <category term="随机森林" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/"/>
-    
-      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
