@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器学习之XGBoost]]></title>
+    <url>%2F2018%2F02%2F22%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BXGBoost%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[机器学习之GBDT]]></title>
     <url>%2F2018%2F02%2F21%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8BGBDT%2F</url>
     <content type="text"></content>
@@ -119,9 +124,9 @@
       </categories>
       <tags>
         <tag>监督学习</tag>
-        <tag>集成学习</tag>
         <tag>决策树</tag>
         <tag>随机森林</tag>
+        <tag>集成学习</tag>
       </tags>
   </entry>
   <entry>
