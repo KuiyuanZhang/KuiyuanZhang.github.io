@@ -117,7 +117,7 @@
 
 
 
-  <meta name="keywords" content="k-近邻算法,KNN,监督学习," />
+  <meta name="keywords" content="python,机器学习" />
 
 
 
@@ -130,18 +130,17 @@
 
 
 
-<meta name="description" content="“近朱者赤，近墨者黑”  监督学习、多分类/回归、判别模型 没有显式的学习过程，K 最近邻算法使用整个数据集作为训练集，而非将数据集分割为一个数据集和一个测试集。  优点：  简单，精度高，无数据输入假定，对outlier不敏感，分类与回归均可操作，可用于非线性分类  缺点：  计算复杂度高，空间复杂度高，K需预先设定，对大小不平衡的数据易偏向大容量数据  适用数据范围：  数值型、标称型  常用">
-<meta name="keywords" content="k-近邻算法,KNN,监督学习">
+<meta name="description" content="Stay hungry. Stay foolish.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习之K近邻算法（KNN）">
-<meta property="og:url" content="http://yoursite.com/2018/02/12/机器学习之K近邻算法（KNN）/index.html">
+<meta property="og:title" content="机器学习之K-均值聚类（K-means）">
+<meta property="og:url" content="http://yoursite.com/2018/02/26/机器学习之K-均值聚类（K-means）/index.html">
 <meta property="og:site_name" content="Kuiyuan&#39;s Blog">
-<meta property="og:description" content="“近朱者赤，近墨者黑”  监督学习、多分类/回归、判别模型 没有显式的学习过程，K 最近邻算法使用整个数据集作为训练集，而非将数据集分割为一个数据集和一个测试集。  优点：  简单，精度高，无数据输入假定，对outlier不敏感，分类与回归均可操作，可用于非线性分类  缺点：  计算复杂度高，空间复杂度高，K需预先设定，对大小不平衡的数据易偏向大容量数据  适用数据范围：  数值型、标称型  常用">
+<meta property="og:description" content="Stay hungry. Stay foolish.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-14T15:19:41.849Z">
+<meta property="og:updated_time" content="2018-02-26T15:38:05.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习之K近邻算法（KNN）">
-<meta name="twitter:description" content="“近朱者赤，近墨者黑”  监督学习、多分类/回归、判别模型 没有显式的学习过程，K 最近邻算法使用整个数据集作为训练集，而非将数据集分割为一个数据集和一个测试集。  优点：  简单，精度高，无数据输入假定，对outlier不敏感，分类与回归均可操作，可用于非线性分类  缺点：  计算复杂度高，空间复杂度高，K需预先设定，对大小不平衡的数据易偏向大容量数据  适用数据范围：  数值型、标称型  常用">
+<meta name="twitter:title" content="机器学习之K-均值聚类（K-means）">
+<meta name="twitter:description" content="Stay hungry. Stay foolish.">
 
 
 
@@ -171,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/12/机器学习之K近邻算法（KNN）/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/26/机器学习之K-均值聚类（K-means）/"/>
 
 
 
 
 
-  <title>机器学习之K近邻算法（KNN） | Kuiyuan's Blog</title>
+  <title>机器学习之K-均值聚类（K-means） | Kuiyuan's Blog</title>
   
 
 
@@ -377,7 +376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/12/机器学习之K近邻算法（KNN）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/机器学习之K-均值聚类（K-means）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KuiyuanZhang">
@@ -394,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">机器学习之K近邻算法（KNN）</h1>
+          <h1 class="post-title" itemprop="name headline">机器学习之K-均值聚类（K-means）</h1>
         
 
         <div class="post-meta">
@@ -406,8 +405,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T21:30:45+08:00">
-                2018-02-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T23:38:05+08:00">
+                2018-02-26
               </time>
             
 
@@ -416,28 +415,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -467,7 +444,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,376 字
+                  0 字
                 </span>
               
 
@@ -483,7 +460,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  1 分钟
                 </span>
               
             </div>
@@ -504,92 +481,7 @@
       
 
       
-        <p><strong>“近朱者赤，近墨者黑”</strong></p>
-<blockquote>
-<p>监督学习、多分类/回归、判别模型</p>
-<p>没有显式的学习过程，K 最近邻算法使用整个数据集作为训练集，而非将数据集分割为一个数据集和一个测试集。</p>
-</blockquote>
-<p><strong>优点：</strong></p>
-<blockquote>
-<p>简单，精度高，无数据输入假定，对outlier不敏感，分类与回归均可操作，可用于非线性分类</p>
-</blockquote>
-<p><strong>缺点：</strong></p>
-<blockquote>
-<p>计算复杂度高，空间复杂度高，K需预先设定，对大小不平衡的数据易偏向大容量数据</p>
-</blockquote>
-<p><strong>适用数据范围：</strong></p>
-<blockquote>
-<p>数值型、标称型</p>
-</blockquote>
-<p><strong>常用算法：</strong></p>
-<blockquote>
-<p>kd树：</p>
-<p>对x的K个特征，一个一个做切分，使得每个数据最终都在切分点上（中位数），对输入的数据搜索kd树，找到K近邻</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><ul>
-<li><p>KNN的三个基本要素</p>
-<p>K值的选择，距离度量、分类决策规则</p>
-<p>​</p>
-</li>
-</ul>
-<h2 id="2-基本思路"><a href="#2-基本思路" class="headerlink" title="2. 基本思路"></a>2. 基本思路</h2><h4 id="2-1-工作原理"><a href="#2-1-工作原理" class="headerlink" title="2.1 工作原理"></a>2.1 工作原理</h4><ol>
-<li>假设有一个带有标签的样本数据集（训练样本集），其中包含每条数据与所属分类的对应关系。</li>
-<li>输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较。<ol>
-<li>计算新数据与样本数据集中每条数据的距离。</li>
-<li>对求得的所有距离进行排序（从小到大，越小表示越相似）。</li>
-<li>取前 k （k 一般小于等于 20 ）个样本数据对应的分类标签。</li>
-</ol>
-</li>
-<li>求 k 个数据中出现次数最多的分类标签作为新数据的分类。</li>
-</ol>
-<h4 id="2-2-实现kd树"><a href="#2-2-实现kd树" class="headerlink" title="2.2 实现kd树"></a>2.2 实现kd树</h4><ul>
-<li><p><strong>kd树</strong></p>
-<p>是一种对k维空间中实例点进行储存以便对其进行快速检索的树形数据结构。</p>
-<p>是二叉树，表示对k维空间的一个划分。</p>
-</li>
-<li><p>构造kd树</p>
-</li>
-</ul>
-<h4 id="2-3-对偶形式"><a href="#2-3-对偶形式" class="headerlink" title="2.3 对偶形式"></a>2.3 对偶形式</h4><ul>
-<li><p><strong>基本想法</strong>    </p>
-<p>将w和d表示为实例x和标记y的线性组合的形式，通过求解其系数求得w和b</p>
-</li>
-<li><p>对偶形式迭代是收敛的，存在多个解</p>
-</li>
-</ul>
-<h2 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h2><h4 id="3-1-一般流程"><a href="#3-1-一般流程" class="headerlink" title="3.1 一般流程"></a>3.1 一般流程</h4><blockquote>
-<p>收集数据：可以使用任何方法</p>
-<p>准备数据：距离计算所需要的数值，最好是结构化的数据格式</p>
-<p>分析数据：可以使用任何方法</p>
-<p>训练算法：此步骤不适用于KNN算法</p>
-<p>测试算法：计算错误率</p>
-<p>使用算法：首先需要输入样本数据接结构化输出结果，然后运行KNN算法判定输入数据属于哪个分类，最后应用对计算出的分类执行后续处理。</p>
-</blockquote>
-<h4 id="3-2-调参"><a href="#3-2-调参" class="headerlink" title="3.2 调参"></a>3.2 调参</h4><ul>
-<li><p><strong>距离度量</strong></p>
-<p>使用距离为欧式距离</p>
-<p>更一般的距离为Lp距离和曼哈顿距离</p>
-</li>
-<li><p><strong>K值的选择</strong></p>
-<p>K值较小时，近似误差会减小，估计误差会变大。</p>
-<p>K值较大时，估计误差减小，近似误差越大。</p>
-<p>K=N时，无论实例输入什么，都简单地预测为训练实例中最多的一类。</p>
-<p>实际应用中，K值一般取一个比较小的数值。通常采用<strong>交叉验证</strong>选取最优K值</p>
-</li>
-<li><p><strong>分类决策规则</strong></p>
-<p>多数表决规则 等价于 经验风险最小化</p>
-</li>
-</ul>
-<h2 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4. 代码实现"></a>4. 代码实现</h2><h4 id="4-1-算法核心"><a href="#4-1-算法核心" class="headerlink" title="4.1 算法核心"></a>4.1 算法核心</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify0</span><span class="params">(inX, dataSet, labels, k)</span>:</span></span><br><span class="line">    dataSetSize = dataSet.shape[<span class="number">0</span>]</span><br><span class="line">    diffMat = tile(inX, (dataSetSize,<span class="number">1</span>)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat**<span class="number">2</span></span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=<span class="number">1</span>)</span><br><span class="line">    distances = sqDistances**<span class="number">0.5</span></span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    classCount=&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]</span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,<span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    sortedClassCount = sorted(classCount.iteritems(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>)</span><br><span class="line">    <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<h4 id="4-2-sklearn实现"><a href="#4-2-sklearn实现" class="headerlink" title="4.2 sklearn实现"></a>4.2 sklearn实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> matplotlib.colors <span class="keyword">import</span> ListedColormap</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> neighbors, datasets</span><br><span class="line"></span><br><span class="line">n_neighbors = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入一些要玩的数据</span></span><br><span class="line"><span class="comment"># iris = datasets.load_iris()</span></span><br><span class="line"><span class="comment"># X = iris.data[:, :2]  # 我们只采用前两个feature. 我们可以使用二维数据集避免这个丑陋的切片</span></span><br><span class="line"><span class="comment"># y = iris.target</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print 'X=', type(X), X</span></span><br><span class="line"><span class="comment"># print 'y=', type(y), y</span></span><br><span class="line"></span><br><span class="line">X = array([[<span class="number">-1.0</span>, <span class="number">-1.1</span>], [<span class="number">-1.0</span>, <span class="number">-1.0</span>], [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1.0</span>, <span class="number">1.1</span>], [<span class="number">2.0</span>, <span class="number">2.0</span>], [<span class="number">2.0</span>, <span class="number">2.1</span>]])</span><br><span class="line">y = array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># print 'X=', type(X), X</span></span><br><span class="line"><span class="comment"># print 'y=', type(y), y</span></span><br><span class="line"></span><br><span class="line">h = <span class="number">.02</span>  <span class="comment"># 网格中的步长</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建彩色的地图</span></span><br><span class="line"><span class="comment"># cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#AAAAFF'])</span></span><br><span class="line"><span class="comment"># cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])</span></span><br><span class="line"></span><br><span class="line">cmap_light = ListedColormap([<span class="string">'#FFAAAA'</span>, <span class="string">'#AAFFAA'</span>])</span><br><span class="line">cmap_bold = ListedColormap([<span class="string">'#FF0000'</span>, <span class="string">'#00FF00'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> weights <span class="keyword">in</span> [<span class="string">'uniform'</span>, <span class="string">'distance'</span>]:</span><br><span class="line">    <span class="comment"># 我们创建了一个knn分类器的实例，并适合数据。</span></span><br><span class="line">    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)</span><br><span class="line">    clf.fit(X, y)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制决策边界。为此，我们将为每个分配一个颜色</span></span><br><span class="line">    <span class="comment"># 来绘制网格中的点 [x_min, x_max]x[y_min, y_max].</span></span><br><span class="line">    x_min, x_max = X[:, <span class="number">0</span>].min() - <span class="number">1</span>, X[:, <span class="number">0</span>].max() + <span class="number">1</span></span><br><span class="line">    y_min, y_max = X[:, <span class="number">1</span>].min() - <span class="number">1</span>, X[:, <span class="number">1</span>].max() + <span class="number">1</span></span><br><span class="line">    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),</span><br><span class="line">                         np.arange(y_min, y_max, h))</span><br><span class="line">    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将结果放入一个彩色图中</span></span><br><span class="line">    Z = Z.reshape(xx.shape)</span><br><span class="line">    plt.figure()</span><br><span class="line">    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制训练点</span></span><br><span class="line">    plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, cmap=cmap_bold)</span><br><span class="line">    plt.xlim(xx.min(), xx.max())</span><br><span class="line">    plt.ylim(yy.min(), yy.max())</span><br><span class="line">    plt.title(<span class="string">"3-Class classification (k = %i, weights = '%s')"</span></span><br><span class="line">              % (n_neighbors, weights))</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h4 id="4-3-《机器学习实战》（python3-x）"><a href="#4-3-《机器学习实战》（python3-x）" class="headerlink" title="4.3 《机器学习实战》（python3.x）"></a>4.3 《机器学习实战》（python3.x）</h4><p>​        <a href="http://nbviewer.jupyter.org/github/KuiyuanZhang/Machine-Learning-in-Action/tree/master/chapter2/KNN.ipynb" target="_blank" rel="noopener">第二章 k-近邻算法 </a></p>
-<h2 id="5-补充"><a href="#5-补充" class="headerlink" title="5. 补充"></a>5. 补充</h2><ul>
-<li>精度高（小于最优贝叶斯最有分类器的2倍。证明：周志华《机器学习》）</li>
-<li>算法的收敛性（证明：李航《统计学习方法》P31）</li>
-<li>墙裂推荐：<a href="https://github.com/apachecn/MachineLearning" target="_blank" rel="noopener">https://github.com/apachecn/MachineLearning</a></li>
-</ul>
-
+        
       
     </div>
     
@@ -615,16 +507,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/k-近邻算法/" rel="tag"><i class="fa fa-tag"></i> k-近邻算法</a>
-          
-            <a href="/tags/KNN/" rel="tag"><i class="fa fa-tag"></i> KNN</a>
-          
-            <a href="/tags/监督学习/" rel="tag"><i class="fa fa-tag"></i> 监督学习</a>
-          
-        </div>
-      
 
       
       
@@ -634,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/11/转-吴恩达老师的机器学习课程/" rel="next" title="转<吴恩达老师的机器学习课程>">
-                <i class="fa fa-chevron-left"></i> 转<吴恩达老师的机器学习课程>
+              <a href="/2018/02/24/机器学习之AdaBoost、RF、GBDT、XGBoost区别/" rel="next" title="机器学习之AdaBoost、RF、GBDT、XGBoost区别">
+                <i class="fa fa-chevron-left"></i> 机器学习之AdaBoost、RF、GBDT、XGBoost区别
               </a>
             
           </div>
@@ -643,10 +525,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/13/机器学习之朴素贝叶斯（bayes）/" rel="prev" title="机器学习之朴素贝叶斯（bayes）">
-                机器学习之朴素贝叶斯（bayes） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -700,17 +578,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -855,22 +724,6 @@ show_date_time();
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概念"><span class="nav-number">1.</span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基本思路"><span class="nav-number">2.</span> <span class="nav-text">2. 基本思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-工作原理"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-实现kd树"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2 实现kd树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-对偶形式"><span class="nav-number">2.0.3.</span> <span class="nav-text">2.3 对偶形式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用"><span class="nav-number">3.</span> <span class="nav-text">3. 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-一般流程"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 一般流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-调参"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 调参</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-代码实现"><span class="nav-number">4.</span> <span class="nav-text">4. 代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-算法核心"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 算法核心</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-sklearn实现"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 sklearn实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-《机器学习实战》（python3-x）"><span class="nav-number">4.0.3.</span> <span class="nav-text">4.3 《机器学习实战》（python3.x）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-补充"><span class="nav-number">5.</span> <span class="nav-text">5. 补充</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
