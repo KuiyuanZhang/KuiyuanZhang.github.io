@@ -129,20 +129,6 @@
   </entry>
   
   <entry>
-    <title>机器学习之决策树</title>
-    <link href="http://yoursite.com/2018/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/"/>
-    <id>http://yoursite.com/2018/02/16/机器学习之决策树/</id>
-    <published>2018-02-16T15:34:10.000Z</published>
-    <updated>2018-02-16T15:34:10.937Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>机器学习之朴素贝叶斯（bayes）</title>
     <link href="http://yoursite.com/2018/02/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%EF%BC%88bayes%EF%BC%89/"/>
     <id>http://yoursite.com/2018/02/13/机器学习之朴素贝叶斯（bayes）/</id>
@@ -418,11 +404,11 @@
     
       <category term="监督学习" scheme="http://yoursite.com/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
     
+      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
       <category term="决策树" scheme="http://yoursite.com/tags/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
     
       <category term="随机森林" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/"/>
-    
-      <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -518,6 +504,37 @@
       <category term="PCA" scheme="http://yoursite.com/tags/PCA/"/>
     
       <category term="降维" scheme="http://yoursite.com/tags/%E9%99%8D%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《python机器学习》笔记</title>
+    <link href="http://yoursite.com/2018/01/18/%E3%80%8Apython%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%8B%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/01/18/《python机器学习》笔记/</id>
+    <published>2018-01-17T16:10:00.000Z</published>
+    <updated>2018-02-16T03:03:00.072Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文是塞巴斯蒂安·拉施卡（Sebastian Raschka）所著的《Python机器学习》一书的学习笔记，所有练习代码来源于书中。</p></blockquote><h2 id="第一章-赋予机器学习数据的能力"><a href="#第一章-赋予机器学习数据的能力" class="headerlink" title="第一章  赋予机器学习数据的能力"></a>第一章  赋予机器学习数据的能力</h2><p>主要讲述了以下几点：</p><ul><li><p>机器学习分类：监督学习、无监督学习、强化学习。通过监督学习对未来事件进行预测，通过强化学习解决交互式问题，通过无监督学习发现数据本身潜在的结构。</p></li><li><p>步骤：数据预处理，选择模型类型并进行训练，模型检验与使用位置数据进行预测。</p></li><li><p>Python在机器学习中的应用：Numpy、SciPy、scikit-learn、matplotlab、pandas。</p><a id="more"></a></li></ul><h2 id="第二章-机器学习分类算法"><a href="#第二章-机器学习分类算法" class="headerlink" title="第二章  机器学习分类算法"></a>第二章  机器学习分类算法</h2><p>主要讲述了一下几点：</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文是塞巴斯蒂安·拉施卡（Sebastian Raschka）所著的《Python机器学习》一书的学习笔记，所有练习代码来源于书中。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;第一章-赋予机器学习数据的能力&quot;&gt;&lt;a href=&quot;#第一章-赋予机器学习数据的能力&quot; class=&quot;headerlink&quot; title=&quot;第一章  赋予机器学习数据的能力&quot;&gt;&lt;/a&gt;第一章  赋予机器学习数据的能力&lt;/h2&gt;&lt;p&gt;主要讲述了以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;机器学习分类：监督学习、无监督学习、强化学习。通过监督学习对未来事件进行预测，通过强化学习解决交互式问题，通过无监督学习发现数据本身潜在的结构。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;步骤：数据预处理，选择模型类型并进行训练，模型检验与使用位置数据进行预测。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Python在机器学习中的应用：Numpy、SciPy、scikit-learn、matplotlab、pandas。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="python机器学习" scheme="http://yoursite.com/tags/python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
