@@ -117,7 +117,7 @@
 
 
 
-  <meta name="keywords" content="监督学习,决策树,随机森林,集成学习," />
+  <meta name="keywords" content="监督学习,决策树,集成学习,随机森林," />
 
 
 
@@ -131,7 +131,7 @@
 
 
 <meta name="description" content="集成学习，判别模型，多分类与回归，正则化的极大似然估计 随机森林主页：https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm#inter  套袋法(bagging)  ​    该方法的第一步就是用数据集（用抽样法创建而成）创建多个模型。在抽样法中，每个生成的训练集由原始数据集的随机次级样本组成。每个训练集都和原始数据集一">
-<meta name="keywords" content="监督学习,决策树,随机森林,集成学习">
+<meta name="keywords" content="监督学习,决策树,集成学习,随机森林">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习之随机森林">
 <meta property="og:url" content="http://yoursite.com/2018/02/02/机器学习之随机森林/index.html">
@@ -150,7 +150,7 @@
 <meta property="og:image" content="http://www.analyticsvidhya.com/blog/wp-content/uploads/2014/06/DF.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3129325-32c47591f535a457.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/610">
 <meta property="og:image" content="https://images0.cnblogs.com/blog2015/764050/201506/191810324821860.png">
-<meta property="og:updated_time" content="2018-02-16T03:04:45.422Z">
+<meta property="og:updated_time" content="2018-03-02T02:32:58.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习之随机森林">
 <meta name="twitter:description" content="集成学习，判别模型，多分类与回归，正则化的极大似然估计 随机森林主页：https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm#inter  套袋法(bagging)  ​    该方法的第一步就是用数据集（用抽样法创建而成）创建多个模型。在抽样法中，每个生成的训练集由原始数据集的随机次级样本组成。每个训练集都和原始数据集一">
@@ -552,10 +552,10 @@
 </blockquote>
 <h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
 <li><p><strong>决策树</strong></p>
-<p>决策树是一种树形结构，其中每个内部节点表示一个属性上的测试，每个分支代表一个测试输出，每个叶节点代表一种类别。常见的决策树算法有C4.5、ID3和CART。</p>
+<p>​    决策树是一种树形结构，其中每个内部节点表示一个属性上的测试，每个分支代表一个测试输出，每个叶节点代表一种类别。常见的决策树算法有C4.5、ID3和CART。</p>
 </li>
 <li><p><strong>信息、熵以及信息增益</strong></p>
-<p>如果带分类的事物集合可以划分为多个类别当中，则某个类（xi）的信息可以定义如下:</p>
+<p>​    如果带分类的事物集合可以划分为多个类别当中，则某个类（xi）的信息可以定义如下:</p>
 <p><img src="https://images0.cnblogs.com/blog2015/764050/201506/182127101856815.png" alt=""></p>
 <p>　　I(x)用来表示随机变量的信息，p(xi)指是当xi发生时的概率。</p>
 <p>　　熵是用来度量不确定性的，当熵越大，X=xi的不确定性越大，反之越小。对于机器学习中的分类问题而言，熵越大即这个类别的不确定性更大，反之越小。</p>
@@ -566,7 +566,7 @@
 </li>
 </ul>
 <p>​      <img src="https://upload-images.jianshu.io/upload_images/3129325-d9a81dbdaa0155d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<p>​                           如果一个观测值为length=45,blue eye,legs=2,那么它将被划分为红色</p>
+<p>​                                   如果一个观测值为length=45,blue eye,legs=2,那么它将被划分为红色</p>
 <ul>
 <li><p><strong>随机森林</strong></p>
 <p>​    引入的随机森林算法将自动创建随机决策树群。由于这些树是随机生成的，大部分的树(甚至 99.9%)对解决你的分类或回归问题是没有有意义。</p>
@@ -666,8 +666,8 @@
 <p><strong>CART 5 : Variable Industry</strong></p>
 <p>　　<img src="http://www.analyticsvidhya.com/blog/wp-content/uploads/2014/06/rf5.png" alt="rf5"></p>
 <p>　　我们要预测的某个人的信息如下：</p>
-<p>  　　1. Age : 35 years ; 2. Gender : Male ; 3. Highest Educational Qualification : Diploma holder; 4. Industry : Manufacturing; 5. Residence : Metro.</p>
-<p>　　根据这五棵CART树的分类结果，我们可以针对这个人的信息建立收入层次的分布情况：</p>
+<pre><code>  　　1. Age : 35 years ; 2. Gender : Male ; 3. Highest Educational Qualification : Diploma holder; 4. Industry : Manufacturing; 5. Residence : Metro.
+</code></pre><p>　　根据这五棵CART树的分类结果，我们可以针对这个人的信息建立收入层次的分布情况：</p>
 <p>　　<img src="http://www.analyticsvidhya.com/blog/wp-content/uploads/2014/06/DF.png" alt="DF"></p>
 <p>　　最后，我们得出结论，这个人的收入层次70%是一等，大约24%为二等，6%为三等，所以最终认定该人属于一等收入层次（小于$40,000）。</p>
 <h3 id="6-Scikit-learn实现随机森林"><a href="#6-Scikit-learn实现随机森林" class="headerlink" title="6. Scikit-learn实现随机森林"></a>6. Scikit-learn实现随机森林</h3><h4 id="6-1-以函数f-x-log-x-为例"><a href="#6-1-以函数f-x-log-x-为例" class="headerlink" title="6.1 以函数f(x)=log(x)为例"></a>6.1 以函数f(x)=log(x)为例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">x = np.random.uniform(<span class="number">1</span>, <span class="number">100</span>, <span class="number">1000</span>)</span><br><span class="line">y = np.log(x) + np.random.normal(<span class="number">0</span>, <span class="number">.3</span>, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">pl.scatter(x, y, s=<span class="number">1</span>, label=<span class="string">"log(x) with noise"</span>)</span><br><span class="line"></span><br><span class="line">pl.plot(np.arange(<span class="number">1</span>, <span class="number">100</span>), np.log(np.arange(<span class="number">1</span>, <span class="number">100</span>)), c=<span class="string">"b"</span>, label=<span class="string">"log(x) true function"</span>)</span><br><span class="line">pl.xlabel(<span class="string">"x"</span>)</span><br><span class="line">pl.ylabel(<span class="string">"f(x) = log(x)"</span>)</span><br><span class="line">pl.legend(loc=<span class="string">"best"</span>)</span><br><span class="line">pl.title(<span class="string">"A Basic Log Function"</span>)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
@@ -717,9 +717,9 @@
           
             <a href="/tags/决策树/" rel="tag"><i class="fa fa-tag"></i> 决策树</a>
           
-            <a href="/tags/随机森林/" rel="tag"><i class="fa fa-tag"></i> 随机森林</a>
-          
             <a href="/tags/集成学习/" rel="tag"><i class="fa fa-tag"></i> 集成学习</a>
+          
+            <a href="/tags/随机森林/" rel="tag"><i class="fa fa-tag"></i> 随机森林</a>
           
         </div>
       
@@ -827,7 +827,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
