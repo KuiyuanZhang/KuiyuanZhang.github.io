@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
+
+
+
+  <meta name="keywords" content="监督学习,决策树," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kuiyuan's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="无监督学习、判别模型、多分类/回归  特点：  适用于小数据集，在进行逐步应答过程中，典型的决策树分析会使用分层变量或决策节点。 场景举例：基于规则的信用评估、赛马结果预测  优点：  计算量简单，可解释性强，比较适合处理有缺失属性值的样本，能够处理不相关的特征； 擅长对人、地点、事物的一系列不同特征、品质、特性进行评估  缺点：  容易过拟合（后续出现了随机森林，减小了过拟合现象）,使用剪枝来">
+<meta name="keywords" content="监督学习,决策树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习之决策树">
+<meta property="og:url" content="http://yoursite.com/2018/02/16/机器学习之决策树/index.html">
+<meta property="og:site_name" content="Kuiyuan&#39;s Blog">
+<meta property="og:description" content="无监督学习、判别模型、多分类/回归  特点：  适用于小数据集，在进行逐步应答过程中，典型的决策树分析会使用分层变量或决策节点。 场景举例：基于规则的信用评估、赛马结果预测  优点：  计算量简单，可解释性强，比较适合处理有缺失属性值的样本，能够处理不相关的特征； 擅长对人、地点、事物的一系列不同特征、品质、特性进行评估  缺点：  容易过拟合（后续出现了随机森林，减小了过拟合现象）,使用剪枝来">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/161909021542396.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/161925257011050.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/161933409209524.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/162006264669404.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/162013009355725.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/162037486546319.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/162038320452331.png">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/605905/201506/162039064983405.png">
+<meta property="og:updated_time" content="2018-02-27T11:19:50.028Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习之决策树">
+<meta name="twitter:description" content="无监督学习、判别模型、多分类/回归  特点：  适用于小数据集，在进行逐步应答过程中，典型的决策树分析会使用分层变量或决策节点。 场景举例：基于规则的信用评估、赛马结果预测  优点：  计算量简单，可解释性强，比较适合处理有缺失属性值的样本，能够处理不相关的特征； 擅长对人、地点、事物的一系列不同特征、品质、特性进行评估  缺点：  容易过拟合（后续出现了随机森林，减小了过拟合现象）,使用剪枝来">
+<meta name="twitter:image" content="https://images0.cnblogs.com/blog2015/605905/201506/161909021542396.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/16/机器学习之决策树/"/>
+
+
+
+
+
+  <title>机器学习之决策树 | Kuiyuan's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-112777962-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?781a1b13eabd27493228f44824af7329";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/KuiyuanZhang" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kuiyuan's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Stay hungry. Stay foolish.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
+            
+            top
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-futbol-o"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/16/机器学习之决策树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KuiyuanZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/17525031?s=400&u=fab06329bc1d10873fe82aa4c050440ace03202a&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kuiyuan's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习之决策树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-16T23:34:10+08:00">
+                2018-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,931 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>无监督学习、判别模型、多分类/回归</p>
+</blockquote>
+<p><strong>特点：</strong></p>
+<blockquote>
+<p>适用于小数据集，在进行逐步应答过程中，典型的决策树分析会使用分层变量或决策节点。</p>
+<p>场景举例：基于规则的信用评估、赛马结果预测</p>
+</blockquote>
+<p><strong>优点：</strong></p>
+<blockquote>
+<p>计算量简单，可解释性强，比较适合处理有缺失属性值的样本，能够处理不相关的特征；</p>
+<p>擅长对人、地点、事物的一系列不同特征、品质、特性进行评估</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<blockquote>
+<p>容易过拟合（后续出现了随机森林，减小了过拟合现象）,使用剪枝来避免过拟合</p>
+</blockquote>
+<p><strong>适用数据类型：</strong></p>
+<blockquote>
+<p>数值型和标称型</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><ul>
+<li><p><strong>信息</strong></p>
+<p>​    这个是熵和信息增益的基础概念，我觉得对于这个概念的理解更应该把他认为是一用名称，就比如‘鸡‘(加引号意思是说这个是名称)是用来修饰鸡(没加引号是说存在的动物即鸡)，‘狗’是用来修饰狗的，但是假如在鸡还未被命名为’鸡’的时候，鸡被命名为‘狗’，狗未被命名为‘狗’的时候，狗被命名为’鸡’，那么现在我们看到狗就会称其为‘鸡’，见到鸡的话会称其为‘鸡’，同理，信息应该是对一个抽象事物的命名，无论用不用‘信息’来命名这种抽象事物，或者用其他名称来命名这种抽象事物，这种抽象事物是客观存在的。</p>
+<p>​    引用香农的话，信息是用来消除随机不确定性的东西，当然这句话虽然经典，但是还是很难去搞明白这种东西到底是个什么样，可能在不同的地方来说，指的东西又不一样，从数学的角度来说可能更加清楚一些，数学本来就是建造在悬崖之上的一种理论，一种抽象的理论，利用抽象来解释抽象可能更加恰当，同时也是在机器学习决策树中用的定义，如果带分类的事物集合可以划分为多个类别当中，则某个类（xi）的信息定义如下:</p>
+</li>
+</ul>
+<p>​    　　　　　　　　　　　　　　　　　　　　　　<img src="https://images0.cnblogs.com/blog2015/605905/201506/161909021542396.png" alt="img"></p>
+<p>​    I(x)用来表示随机变量的信息，p(xi)指是当xi发生时的概率，这里说一下随机变量的概念，随机变量时概率论    中的概念，是从样本空间到实数集的一个映射，样本空间是指所有随机事件发生的结果的并集，比如当你抛硬币的时候，会发生两个结果，正面或反面，而随机事件在这里可以是，硬币是正面；硬币是反面；两个随机事件，而{正面，反面}这个集合便是样本空间，但是在数学中不会说用‘正面’、‘反面’这样的词语来作为数学运算的介质，而是用0表示反面，用1表示正面，而“正面-&gt;1”,”反面-&gt;0”这样的映射便为随机变量，即类似一个数学函数。</p>
+<ul>
+<li><p><strong>熵</strong></p>
+<p>既然信息已经说完，熵说起来就不会那么的抽象，更多的可能是概率论的定义，熵是约翰.冯.诺依曼建议使用的命名（当然是英文），最初原因是因为大家都不知道它是什么意思，在信息论和概率论中熵是对随机变量不确定性的度量,与上边联系起来，熵便是信息的期望值，可以记作：</p>
+<p>　　　　　　　　　　　　　　　　　　　　　　　　　        　<img src="https://images0.cnblogs.com/blog2015/605905/201506/161925257011050.png" alt="img"></p>
+<p>​熵只依赖X的分布，和X的取值没有关系，熵是用来度量不确定性，当熵越大，概率说X=xi的不确定性越大，反之越小，在机器学期中分类中说，熵越大即这个类别的不确定性更大，反之越小，当随机变量的取值为两个时，熵随概率的变化曲线如下图：</p>
+</li>
+</ul>
+<p>　　　　　　　　　　　　　　　　　　　　<img src="https://images0.cnblogs.com/blog2015/605905/201506/161933409209524.png" alt="img"></p>
+<p>当p=0或p=1时，H(p)=0,随机变量完全没有不确定性，当p=0.5时，H(p)=1,此时随机变量的不确定性最大</p>
+<p>条件熵</p>
+<p>​    条件熵是用来解释信息增益而引入的概念，概率定义：随机变量X在给定条件下随机变量Y的条件熵，对定义描述为：X给定条件下Y的条件干率分布的熵对X的数学期望，在机器学习中为选定某个特征后的熵，公式如下：</p>
+<p>　　　　　　　　　　　　　　　　<img src="https://images0.cnblogs.com/blog2015/605905/201506/162006264669404.png" alt="img"></p>
+<p>这里可能会有疑惑，这个公式是对条件概率熵求期望，但是上边说是选定某个特征的熵，没错，是选定某个特征的熵，因为一个特征可以将待分类的事物集合分为多类，即一个特征对应着多个类别，因此在此的多个分类即为X的取值。</p>
+<ul>
+<li><p><strong>信息增益</strong></p>
+<p>信息增益在决策树算法中是用来选择特征的指标，信息增益越大，则这个特征的选择性越好，在概率中定义为：待分类的集合的熵和选定某个特征的条件熵之差（这里只的是经验熵或经验条件熵，由于真正的熵并不知道，是根据样本计算出来的），公式如下：</p>
+</li>
+</ul>
+<p>　　　　　　　　　　　　　　　　<img src="https://images0.cnblogs.com/blog2015/605905/201506/162013009355725.png" alt="img"></p>
+<p>​    注意：这里不要理解偏差，因为上边说了熵是类别的，但是在这里又说是集合的熵，没区别，因为在计算熵        的时候是根据各个类别对应的值求期望来等到熵</p>
+<p>​    信息增益算法（举例，摘自统计学习算法）</p>
+<p>​    训练数据集合D，|D|为样本容量，即样本的个数（D中元素个数），设有K个类Ck来表示，|Ck|为Ci的样本个数，|Ck|之和为|D|，k=1，2…..，根据特征A将D划分为n个子集D1，D2…..Dn，|Di|为Di的样本个数，|Di|之和为|D|,i=1,2,….,记Di中属于Ck的样本集合为Dik,即交集，|Dik|为Dik的样本个数，算法如下：</p>
+<p>​    输入：D，A</p>
+<p>​    输出：信息增益g(D,A)</p>
+<p>(1)D的经验熵H(D)</p>
+<p>　　　　　　　　<img src="https://images0.cnblogs.com/blog2015/605905/201506/162037486546319.png" alt="img"></p>
+<p>​    此处的概率计算是根据古典概率计算，由于训练数据集总个数为|D|，某个分类的个数为|Ck|，在某个分类的概率，或说随机变量取某值的概率为：|Ck|/|D|</p>
+<p>(2)选定A的经验条件熵H(D|A)</p>
+<p>　　　　　　　　<img src="https://images0.cnblogs.com/blog2015/605905/201506/162038320452331.png" alt="img"></p>
+<p>此处的概率计算同上，由于|Di|是选定特征的某个分类的样本个数，则|Di|/|D|,可以说为在选定特征某个分类的概率，后边的求和可以理解为在选定特征的某个类别下的条件概率的熵，即训练集为Di，交集Dik可以理解在Di条件下某个分类的样本个数，即k为某个分类，就是缩小训练集为Di的熵</p>
+<p>(3)信息增益</p>
+<p>　　　　　　　　<img src="https://images0.cnblogs.com/blog2015/605905/201506/162039064983405.png" alt="img"></p>
+<h2 id="2-基本思路"><a href="#2-基本思路" class="headerlink" title="2.基本思路"></a>2.基本思路</h2><h4 id="2-1-伪代码"><a href="#2-1-伪代码" class="headerlink" title="2.1 伪代码"></a>2.1 伪代码</h4><blockquote>
+<p>检测数据集中的所有数据的分类标签是否相同:<br>​    If so return 类标签<br>​    Else:<br>​        寻找划分数据集的最好特征（划分之后信息熵最小，也就是信息增益最大的特征）<br>​        划分数据集<br>​        创建分支节点<br>​            for 每个划分的子集<br>​                调用函数 createBranch （创建分支的函数）并增加返回结果到分支节点中<br>​        return 分支节点</p>
+</blockquote>
+<h4 id="2-2-算法特点"><a href="#2-2-算法特点" class="headerlink" title="2.2 算法特点"></a>2.2 算法特点</h4><blockquote>
+<p>优点：计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据。<br>缺点：可能会产生过度匹配问题。<br>适用数据类型：数值型和标称型。</p>
+</blockquote>
+<p>​    分类回归树（CART）是决策树的一种应用形式，其它形式还有 ID3 和 C4.5 等。</p>
+<p>​    CART 的非终端节点为根节点和内节点。终端节点为叶节点。每个非终端节点代表一个单个输入变量 (X) 和该变量的分割点；而叶节点代表输出变量 (y)。该模型以如下形式用于预测：<strong>沿着决策树的分叉点，到达叶节点，输出在该叶节点上表示的值。</strong></p>
+<p>​    图 3 中的决策树分类了某人根据自己的年龄和婚姻状况决定买跑车还是旅行车。如果此人超过 30 岁且未婚，我们这样沿着决策树：“超过 30 岁吗？” -&gt; 是 -&gt;“已婚？” -&gt; 否。因此，模型的输出结果为跑车。</p>
+<p>​    决策树的生成是一个递归过程</p>
+<p><strong>三种情况下导致导致递归返回</strong>：</p>
+<ul>
+<li>当前节点包含的样本全属于一个类别，无需划分</li>
+<li>当前属性集为空，或是所有属性上取值相同，无法划分</li>
+<li>当前节点包含的样本集合为空，不能划分</li>
+</ul>
+<h3 id="如何建立决策树-Hunt算法"><a href="#如何建立决策树-Hunt算法" class="headerlink" title="如何建立决策树(Hunt算法)"></a>如何建立决策树(Hunt算法)</h3><blockquote>
+<p>Hunt算法的递归定义：</p>
+<ol>
+<li>如果与节点t相关联的训练记录集中，所有记录都属于同一个类，则t是叶节点</li>
+<li>如果与节点t相关联的训练记录集中包含属于多个类的记录，则选择一个<strong>属性测试条件</strong>，将记录划分为较小长度子集。对于测试条件的而每个输出，创建一个子节点，并根据测试结果将Dt中的记录分布到子节点中，然后对每个子节点递归调用此方法。</li>
+</ol>
+</blockquote>
+<ul>
+<li><p><strong>ID3（Iterative Dichotomiser 3）</strong></p>
+<p>由 Ross Quinlan 在1986年提出。该算法创建一个多路树，找到每个节点（即以贪心的方式）分类特征，这将产生分类目标的最大信息增益。决策树发展到其最大尺寸，然后通常利用剪枝来提高树对未知数据的泛华能力。</p>
+</li>
+<li><p><strong>C4.5</strong> </p>
+<p>是 ID3 的后继者，并且通过动态定义将连续属性值分割成一组离散间隔的离散属性（基于数字变量），消除了特征必须被明确分类的限制。C4.5 将训练的树（即，ID3算法的输出）转换成 if-then 规则的集合。然后评估每个规则的这些准确性，以确定应用它们的顺序。如果规则的准确性没有改变，则需要决策树的树枝来解决。</p>
+</li>
+<li><p><strong>C5.0</strong> </p>
+<p>Quinlan 根据专有许可证发布的最新版本。它使用更少的内存，并建立比 C4.5 更小的规则集，同时更准确。</p>
+</li>
+<li><p><strong>CART（Classification and Regression Trees （分类和回归树））</strong></p>
+<p>与 C4.5 非常相似，但它不同之处在于它支持数值目标变量（回归），并且不计算规则集。CART 使用在每个节点产生最大信息增益的特征和阈值来构造二叉树。</p>
+</li>
+</ul>
+<blockquote>
+<p>scikit-learn 源代码中使用 CART 算法的优化版本。</p>
+</blockquote>
+<h2 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h2><h4 id="3-1-一般流程"><a href="#3-1-一般流程" class="headerlink" title="3.1 一般流程"></a>3.1 一般流程</h4><blockquote>
+<p>收集数据：可以使用任何方法。<br>准备数据：树构造算法只适用于标称型数据，因此数值型数据必须离散化。<br>分析数据：可以使用任何方法，构造树完成之后，我们应该检查图形是否符合预期。<br>训练算法：构造树的数据结构。<br>测试算法：使用经验树计算错误率。（经验树没有搜索到较好的资料，有兴趣的同学可以来补充）<br>使用算法：此步骤可以适用于任何监督学习算法，而使用决策树可以更好地理解数据的内在含义。</p>
+</blockquote>
+<h4 id="3-2-调参"><a href="#3-2-调参" class="headerlink" title="3.2 调参"></a>3.2 调参</h4><h2 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4. 代码实现"></a>4. 代码实现</h2><h4 id="4-1-核心算法"><a href="#4-1-核心算法" class="headerlink" title="4.1 核心算法"></a>4.1 核心算法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createTree</span><span class="params">(dataSet, labels)</span>:</span></span><br><span class="line">    classList = [example[<span class="number">-1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">    <span class="comment"># 如果数据集的最后一列的第一个值出现的次数=整个集合的数量，也就说只有一个类别，就只直接返回结果就行</span></span><br><span class="line">    <span class="comment"># 第一个停止条件：所有的类标签完全相同，则直接返回该类标签。</span></span><br><span class="line">    <span class="comment"># count() 函数是统计括号中的值在list中出现的次数</span></span><br><span class="line">    <span class="keyword">if</span> classList.count(classList[<span class="number">0</span>]) == len(classList):</span><br><span class="line">        <span class="keyword">return</span> classList[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 如果数据集只有1列，那么最初出现label次数最多的一类，作为结果</span></span><br><span class="line">    <span class="comment"># 第二个停止条件：使用完了所有特征，仍然不能将数据集划分成仅包含唯一类别的分组。</span></span><br><span class="line">    <span class="keyword">if</span> len(dataSet[<span class="number">0</span>]) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> majorityCnt(classList)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 选择最优的列，得到最优列对应的label含义</span></span><br><span class="line">    bestFeat = chooseBestFeatureToSplit(dataSet)</span><br><span class="line">    <span class="comment"># 获取label的名称</span></span><br><span class="line">    bestFeatLabel = labels[bestFeat]</span><br><span class="line">    <span class="comment"># 初始化myTree</span></span><br><span class="line">    myTree = &#123;bestFeatLabel: &#123;&#125;&#125;</span><br><span class="line">    <span class="comment"># 注：labels列表是可变对象，在PYTHON函数中作为参数时传址引用，能够被全局修改</span></span><br><span class="line">    <span class="comment"># 所以这行代码导致函数外的同名变量被删除了元素，造成例句无法执行，提示'no surfacing' is not in list</span></span><br><span class="line">    <span class="keyword">del</span>(labels[bestFeat])</span><br><span class="line">    <span class="comment"># 取出最优列，然后它的branch做分类</span></span><br><span class="line">    featValues = [example[bestFeat] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">    uniqueVals = set(featValues)</span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">        <span class="comment"># 求出剩余的标签label</span></span><br><span class="line">        subLabels = labels[:]</span><br><span class="line">        <span class="comment"># 遍历当前选择特征包含的所有属性值，在每个数据集划分上递归调用函数createTree()</span></span><br><span class="line">        myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet, bestFeat, value), subLabels)</span><br><span class="line">        <span class="comment"># print 'myTree', value, myTree</span></span><br><span class="line">    <span class="keyword">return</span> myTree</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-sklearn实现"><a href="#4-2-sklearn实现" class="headerlink" title="4.2 sklearn实现"></a>4.2 sklearn实现</h4><ul>
+<li><strong>决策树分类器</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参数</span></span><br><span class="line">n_classes = <span class="number">3</span></span><br><span class="line">plot_colors = <span class="string">"bry"</span></span><br><span class="line">plot_step = <span class="number">0.02</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据</span></span><br><span class="line">iris = load_iris()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pairidx, pair <span class="keyword">in</span> enumerate([[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">2</span>], [<span class="number">0</span>, <span class="number">3</span>], [<span class="number">1</span>, <span class="number">2</span>], [<span class="number">1</span>, <span class="number">3</span>], [<span class="number">2</span>, <span class="number">3</span>]]):</span><br><span class="line">    <span class="comment"># 我们只用两个相应的features</span></span><br><span class="line">    X = iris.data[:, pair]</span><br><span class="line">    y = iris.target</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 训练</span></span><br><span class="line">    clf = DecisionTreeClassifier().fit(X, y)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制决策边界</span></span><br><span class="line">    plt.subplot(<span class="number">2</span>, <span class="number">3</span>, pairidx + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    x_min, x_max = X[:, <span class="number">0</span>].min() - <span class="number">1</span>, X[:, <span class="number">0</span>].max() + <span class="number">1</span></span><br><span class="line">    y_min, y_max = X[:, <span class="number">1</span>].min() - <span class="number">1</span>, X[:, <span class="number">1</span>].max() + <span class="number">1</span></span><br><span class="line">    xx, yy = np.meshgrid(np.arange(x_min, x_max, plot_step),</span><br><span class="line">                         np.arange(y_min, y_max, plot_step))</span><br><span class="line"></span><br><span class="line">    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])</span><br><span class="line">    Z = Z.reshape(xx.shape)</span><br><span class="line">    cs = plt.contourf(xx, yy, Z, cmap=plt.cm.Paired)</span><br><span class="line"></span><br><span class="line">    plt.xlabel(iris.feature_names[pair[<span class="number">0</span>]])</span><br><span class="line">    plt.ylabel(iris.feature_names[pair[<span class="number">1</span>]])</span><br><span class="line">    plt.axis(<span class="string">"tight"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制训练点</span></span><br><span class="line">    <span class="keyword">for</span> i, color <span class="keyword">in</span> zip(range(n_classes), plot_colors):</span><br><span class="line">        idx = np.where(y == i)</span><br><span class="line">        plt.scatter(X[idx, <span class="number">0</span>], X[idx, <span class="number">1</span>], c=color, label=iris.target_names[i],</span><br><span class="line">                    cmap=plt.cm.Paired)</span><br><span class="line"></span><br><span class="line">    plt.axis(<span class="string">"tight"</span>)</span><br><span class="line"></span><br><span class="line">plt.suptitle(<span class="string">"Decision surface of a decision tree using paired features"</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>决策树回归器</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入必要的模型和库</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个随机的数据集</span></span><br><span class="line"><span class="comment"># 参考 https://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.random.mtrand.RandomState.html</span></span><br><span class="line">rng = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># print 'lalalalala===', rng</span></span><br><span class="line"><span class="comment"># rand() 是给定形状的随机值，rng.rand(80, 1)即矩阵的形状是 80行，1列</span></span><br><span class="line"><span class="comment"># sort() </span></span><br><span class="line">X = np.sort(<span class="number">5</span> * rng.rand(<span class="number">80</span>, <span class="number">1</span>), axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># print 'X=', X</span></span><br><span class="line">y = np.sin(X).ravel()</span><br><span class="line"><span class="comment"># print 'y=', y</span></span><br><span class="line">y[::<span class="number">5</span>] += <span class="number">3</span> * (<span class="number">0.5</span> - rng.rand(<span class="number">16</span>))</span><br><span class="line"><span class="comment"># print 'yyy=', y</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 拟合回归模型</span></span><br><span class="line"><span class="comment"># regr_1 = DecisionTreeRegressor(max_depth=2)</span></span><br><span class="line"><span class="comment"># 保持 max_depth=5 不变，增加 min_samples_leaf=6 的参数，效果进一步提升了</span></span><br><span class="line">regr_2 = DecisionTreeRegressor(max_depth=<span class="number">5</span>)</span><br><span class="line">regr_2 = DecisionTreeRegressor(min_samples_leaf=<span class="number">6</span>)</span><br><span class="line"><span class="comment"># regr_3 = DecisionTreeRegressor(max_depth=4)</span></span><br><span class="line"><span class="comment"># regr_1.fit(X, y)</span></span><br><span class="line">regr_2.fit(X, y)</span><br><span class="line"><span class="comment"># regr_3.fit(X, y)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测</span></span><br><span class="line">X_test = np.arange(<span class="number">0.0</span>, <span class="number">5.0</span>, <span class="number">0.01</span>)[:, np.newaxis]</span><br><span class="line"><span class="comment"># y_1 = regr_1.predict(X_test)</span></span><br><span class="line">y_2 = regr_2.predict(X_test)</span><br><span class="line"><span class="comment"># y_3 = regr_3.predict(X_test)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制结果</span></span><br><span class="line">plt.figure()</span><br><span class="line">plt.scatter(X, y, c=<span class="string">"darkorange"</span>, label=<span class="string">"data"</span>)</span><br><span class="line"><span class="comment"># plt.plot(X_test, y_1, color="cornflowerblue", label="max_depth=2", linewidth=2)</span></span><br><span class="line">plt.plot(X_test, y_2, color=<span class="string">"yellowgreen"</span>, label=<span class="string">"max_depth=5"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># plt.plot(X_test, y_3, color="red", label="max_depth=3", linewidth=2)</span></span><br><span class="line">plt.xlabel(<span class="string">"data"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"target"</span>)</span><br><span class="line">plt.title(<span class="string">"Decision Tree Regression"</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-《机器学习实战》（python3-x）"><a href="#4-3-《机器学习实战》（python3-x）" class="headerlink" title="4.3 《机器学习实战》（python3.x）"></a>4.3 《机器学习实战》（python3.x）</h4><p>​    <a href="https://github.com/KuiyuanZhang/Machine-Learning-in-Action/tree/master/chapter3/tree.ipynb" target="_blank" rel="noopener">第三章 决策树</a></p>
+<h2 id="5-补充"><a href="#5-补充" class="headerlink" title="5. 补充"></a>5. 补充</h2><ul>
+<li>优化点</li>
+<li>证明</li>
+<li>参考：<ul>
+<li>李航    《统计学习方法》</li>
+<li>周志华《机器学习》</li>
+<li><a href="http://www.apachecn.org/" target="_blank" rel="noopener">ApacheCN</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------感谢阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/监督学习/" rel="tag"><i class="fa fa-tag"></i> 监督学习</a>
+          
+            <a href="/tags/决策树/" rel="tag"><i class="fa fa-tag"></i> 决策树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/13/机器学习之朴素贝叶斯（bayes）/" rel="next" title="机器学习之朴素贝叶斯（bayes）">
+                <i class="fa fa-chevron-left"></i> 机器学习之朴素贝叶斯（bayes）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/17/机器学习之树回归/" rel="prev" title="机器学习之树回归">
+                机器学习之树回归 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://avatars3.githubusercontent.com/u/17525031?s=400&u=fab06329bc1d10873fe82aa4c050440ace03202a&v=4"
+                alt="KuiyuanZhang" />
+            
+              <p class="site-author-name" itemprop="name">KuiyuanZhang</p>
+              <p class="site-description motion-element" itemprop="description">Stay hungry. Stay foolish.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/KuiyuanZhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:kuiyuanzhang@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/zhang-kui-yuan-53/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/users/a927e8ba8a99/timeline" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/a9192943" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+              </ul>
+          <div id="days"></div>
+</script>
+<script language="javascript">
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("01/16/2018 00:00:00");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+            </div>
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概念"><span class="nav-number">1.</span> <span class="nav-text">1. 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基本思路"><span class="nav-number">2.</span> <span class="nav-text">2.基本思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-伪代码"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 伪代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-算法特点"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2 算法特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何建立决策树-Hunt算法"><span class="nav-number">2.1.</span> <span class="nav-text">如何建立决策树(Hunt算法)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用"><span class="nav-number">3.</span> <span class="nav-text">3. 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-一般流程"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 一般流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-调参"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 调参</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-代码实现"><span class="nav-number">4.</span> <span class="nav-text">4. 代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-核心算法"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 核心算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-sklearn实现"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 sklearn实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-《机器学习实战》（python3-x）"><span class="nav-number">4.0.3.</span> <span class="nav-text">4.3 《机器学习实战》（python3.x）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-补充"><span class="nav-number">5.</span> <span class="nav-text">5. 补充</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KuiyuanZhang</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共43.8k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
