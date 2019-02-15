@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[2018年度总结]]></title>
-    <url>%2F2019%2F01%2F08%2F2018%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[&gt;&gt;&gt;]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[TIME ZONE]]></title>
-    <url>%2F2018%2F03%2F15%2FTIME-ZONE%2F</url>
-    <content type="text"><![CDATA[纽约时间比加州早3个小时New York is 3 hours ahead of California纽约时间比加州早3个小时， New York is 3 hours ahead of California, 但加州时间并没有变慢。 but it does not make California slow. 有人22岁就毕业了， Someone graduated at the age of 22, 但持续了5年才找到稳定的工作！ but waited 5 years before securing a good job! 有人25岁就当上CEO， Someone became a CEO at 25, 却在55岁去世。 and died at 55. 也有人迟到50岁才当上CEO While another became a CEO at 50 然后活到85岁 and lived to 85 years. 有人单身， Someone is still single, 同时也有人已婚。 while someone else got married. 奥巴马55岁就已经退休了， Obama retires at 55, 川普70岁才刚开始当总统 but Trump starts at 70. 世上每个人，本来就有自己的发展时区。 Absolutely everyone in this world works based on their Time Zone. 身边有些人，看似走在你前面， People around you might seem to go ahead of you, 也有一些人，看似走在你后面。 some might seem to be behind you. 但其实每个人在自己的时区，有自己的步程。 But everyone is running their own RACE, in their own TIME. 不用嫉妒，又或嘲笑他们。 Don’t envy them or mock them. 他们都在自己的时区里，你也是！ They are in their TIME ZONE, and you are in yours! 生命就是等待正确的行动时机。 Life is about waiting for the right moment to act. 所以，放轻松些。 So, RELAX 你没有落后。 You’re not LATE. 你没有领先。 You’re not EARLY. 在你自己的时区里，一切的安排都是准时的。 You are very much ON TIME, and in your TIME ZONE.]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>my life</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[机器学习之支持向量机（SVM）]]></title>
     <url>%2F2018%2F02%2F20%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89%2F</url>
     <content type="text"></content>
@@ -159,8 +137,8 @@
       <tags>
         <tag>监督学习</tag>
         <tag>决策树</tag>
-        <tag>集成学习</tag>
         <tag>随机森林</tag>
+        <tag>集成学习</tag>
       </tags>
   </entry>
   <entry>
