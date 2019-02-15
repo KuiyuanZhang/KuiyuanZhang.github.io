@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-11T15:21:38.616Z</updated>
+  <updated>2019-01-08T02:15:21.815Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,22 +17,21 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>New Start</title>
-    <link href="http://yoursite.com/2018/08/11/New/"/>
-    <id>http://yoursite.com/2018/08/11/New/</id>
-    <published>2018-08-11T04:00:00.000Z</published>
-    <updated>2018-08-11T15:21:38.616Z</updated>
+    <title>2018年度总结</title>
+    <link href="http://yoursite.com/2019/01/08/2018%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2019/01/08/2018年度总结/</id>
+    <published>2019-01-08T02:14:09.000Z</published>
+    <updated>2019-01-08T02:15:21.815Z</updated>
     
-    <content type="html"><![CDATA[<p>记忆不是件困难的事情，但记录确会持久保持这个瞬间。</p><p>我选择记录和纪念。</p><p>总一件事情，或者一个人，会彻底影响和改变你的生活。</p><p>我沉默，我挣扎，我欣喜。</p><p>我不相信命运，但我也相信命运。</p><p><strong>很幸运是你，0100 0100  0100 0010 0100 0010。</strong></p><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<p>&gt;<br>&gt;<br>&gt;</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;记忆不是件困难的事情，但记录确会持久保持这个瞬间。&lt;/p&gt;
-&lt;p&gt;我选择记录和纪念。&lt;/p&gt;
-&lt;p&gt;总一件事情，或者一个人，会彻底影响和改变你的生活。&lt;/p&gt;
-&lt;p&gt;我沉默，我挣扎，我欣喜。&lt;/p&gt;
-&lt;p&gt;我不相信命运，但我也相信命运。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;很幸运是你，0100 0100  0100 0010 0100 0010。&lt;/strong&gt;&lt;/p&gt;
+      
+      
+        &lt;p&gt;&amp;gt;&lt;br&gt;&amp;gt;&lt;br&gt;&amp;gt;&lt;/p&gt;
+
+      
     
     </summary>
     
@@ -460,9 +459,9 @@
     
       <category term="决策树" scheme="http://yoursite.com/tags/%E5%86%B3%E7%AD%96%E6%A0%91/"/>
     
-      <category term="随机森林" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/"/>
-    
       <category term="集成学习" scheme="http://yoursite.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="随机森林" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/"/>
     
   </entry>
   
